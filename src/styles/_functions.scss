@@ -1,0 +1,13 @@
+@function calculate-rem($size) {
+  @return $size / 16 * 1rem;
+}
+
+@function dynamic-color($endorsement-count) {
+  @if $endorsement-count > 3 {
+    @return #28a745; // Green for high endorsements
+  } @else if $endorsement-count > 1 {
+    @return #ffc107; // Yellow for medium endorsements
+  } @else {
+    @return #dc3545; // Red for low endorsements
+  }
+}

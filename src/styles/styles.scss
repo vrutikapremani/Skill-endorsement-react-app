@@ -1,0 +1,50 @@
+@import "mixin";
+@import "functions";
+
+.app {
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: auto;
+  padding: calculate-rem(16);
+
+  h2 {
+    text-align: center;
+    font-size: calculate-rem(24);
+  }
+}
+
+.skill-list {
+  @include flex-center(column);
+  gap: 10px;
+}
+
+.skill-item {
+  @include card(8px);
+  border-left: 5px solid;
+
+  &:nth-child(odd) {
+    background: #f1f1f1;
+  }
+
+  h3 {
+    font-size: calculate-rem(18);
+  }
+
+  p {
+    font-size: calculate-rem(14);
+    font-weight: bold;
+  }
+}
+
+// Dynamically set border color based on endorsement count
+@for $i from 1 through 5 {
+  .skill-item:nth-child(#{$i}) {
+    border-left-color: dynamic-color($i);
+  }
+}
+
+@include responsive(mobile) {
+  .app {
+    max-width: 90%;
+  }
+}
